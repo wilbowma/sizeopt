@@ -8,9 +8,9 @@ Require some standard utilities that may not have standard flags: `file`,
 
 I think it is `sh` compliant, but I might accidentally use `bash`.
 
-For working with PDF files, requires `gs`, `pdfsizeopt`, `ect`, and `jbig2enc`.
+For working with PDF files, requires `gs`, `pdfsizeopt` (https://github.com/pts/pdfsizeopt), `ect`, and `jbig2enc`.
 
-For working with PNG, JPEG, ZIP, and GZIP files, requires `ect`.
+For working with PNG, JPEG, ZIP, and GZIP files, requires `ect` (https://github.com/fhanau/Efficient-Compression-Tool).
 
 ## Usage:
 `sizeopt.sh` takes a single argument, a file path, and either modifies it (if
