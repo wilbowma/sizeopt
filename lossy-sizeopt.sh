@@ -5,7 +5,6 @@ QUALITY=${QUALITY-ebook}
 
 IN="$1"
 OUT=`mktemp`
-JOBS=${JOBS-2}
 
 shift
 
@@ -21,7 +20,7 @@ if [[ $SIZE2 -ge $SIZE1 ]]; then
     echo "Didn't shrink; reverting."
     rm "$OUT"
 else
-    mv "$IN" "$IN.preshrink.pdf"
+    echo "Saved $PERC %. Original saved as \"$IN.prelossy.pdf\". Try manually spot-checking before removing, and consider running sizeopt.sh after."
+    mv "$IN" "$IN.prelossy.pdf"
     mv "$OUT" "$IN"
-    echo "Saved $PERC %. Original saved as \"$IN.preshrink.pdf\". Try manually spot-checking before removing."
 fi
