@@ -21,6 +21,8 @@ The helper scripts, such as `pdfopt.sh`, `zipopt.sh`, etc, must be in your
 `$PATH`.
 They have the same interface.
 
+This interface may change.
+
 ### Examples:
 `sizeopt.sh image.png`
 
