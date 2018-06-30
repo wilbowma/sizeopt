@@ -2,7 +2,7 @@
 
 
 # screen < ebook < print
-QUALITY=ebook
+QUALITY=${QUALITY-ebook}
 
 OUT="$1"
 INPUT="$1.preshrink.pdf"
@@ -33,8 +33,12 @@ if which pdfsizeopt; then
     rm "$TMP"
 fi
 
-
-#SIZE1=`stat -f "%z" "$1.safe.pdf"`
-#SIZE2=`stat -f "%z" "$1"`
-#PERC=`bc <<< "scale=2; ($SIZE2 - $SIZE1)/$SIZE1 * 100"`
-#echo "$PERC %"
+SIZE1=`stat -c"%s" "$INPUT"`
+SIZE2=`stat -c"%s" "$OUT"`
+PERC=`bc <<< "scale=2; ($SIZE2 - $SIZE1)/$SIZE1 * 100"`
+if [[ $SIZE2 -ge $SIZE1 ]]; then
+    echo "Didn't shrink; reverting."
+    mv "$INPUT" "$OUT"
+else
+    echo "Saved $PERC %; try manually spot-checking $OUT"
+fi
