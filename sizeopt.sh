@@ -4,7 +4,7 @@ IN=$1
 OUT=`mktemp`
 JOBS=${JOBS-2}
 
-/usr/bin/pdfsizeopt --use-jbig2=yes --use-image-optimizer="ect -9 -strip -progressive --mt-deflate=$JOBS %(targetfnq)s" "$IN" "$OUT"
+/usr/bin/pdfsizeopt --use-jbig2=yes --use-image-optimizer="ect -9 -strip -progressive --mt-deflate=$JOBS %(targetfnq)s" --tmp-dir=/tmp "$IN" "$OUT"
 
 SIZE1=`stat -c"%s" "$IN"`
 SIZE2=`stat -c"%s" "$OUT"`
