@@ -1,11 +1,13 @@
 #!/bin/sh
 
-IN=$1
+IN="$1"
 OUT=`mktemp`
 # configure this if you want worse, but faster, compression
 PRESET=veryslow
 
-ffmpeg -i "$IN" -c:v libx265 -preset $PRESET -crf 34 -c:a copy "$OUT"
+EXTENSION="${IN##*.}"
+
+ffmpeg -i "$IN" -c:v libx265 -preset $PRESET -crf 34 -c:a copy "$OUT.mkv"
 
 SIZE1=`stat -c"%s" "$IN"`
 SIZE2=`stat -c"%s" "$OUT"`
@@ -15,6 +17,6 @@ if [[ $SIZE2 -ge $SIZE1 ]]; then
     echo "Output in $OUT for inspection."
 else
     echo "$IN $PERC %; renaming"
-    mv "$IN" "$IN.preshrink.pdf"
-    mv "$OUT" "$IN"
+    mv "$IN" "$IN.preshrink.$EXTENSION"
+    mv "$OUT" $(echo "$IN" | sed s/$EXTENSION/mkv/)
 fi
