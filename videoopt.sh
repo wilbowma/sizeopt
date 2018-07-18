@@ -13,6 +13,9 @@ exit
 IN="$1"
 OUT=`mktemp`
 # configure this if you want worse, but faster, compression
+# anecdata suggests that actually veryfast is the best speed/compression
+# ratio... but I only transcode things once, while many people may download
+# them.
 PRESET=veryslow
 
 EXTENSION="${IN##*.}"
