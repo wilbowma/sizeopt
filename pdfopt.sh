@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IN=$1
+IN="$1"
 OUT=`mktemp`
 
 # jbig2 makes a big difference.
