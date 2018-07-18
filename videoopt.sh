@@ -11,11 +11,15 @@ echo "Bad (TM)."
 # Adjust -b:a to improve audio equality, or change set -c:a copy
 # Adjust -crf to improve video quality.
 # 34 is a pretty low quality factor... but I haven't noticed anything yet.
-# 23 is the default, and 17 is consider visually lossless. 0 is lossless.
+# 28 is the default, and ~20 is consider visually lossless. 0 is lossless.
 # Adjust PRESENT if you want worse, but faster, compression.
 # Anecdata suggests that actually veryfast is the best speed/compression
 # ratio... but I only transcode things once, while many people may download
 # them.
+# See also
+# https://trac.ffmpeg.org/wiki/Encode/H.265#FAQ
+# https://trac.ffmpeg.org/wiki/Encode/H.264#FAQ
+# https://auphonic.com/blog/2012/09/26/opus-revolutionary-open-audio-codec-podcasts-and-internet-audio/
 exit
 
 IN="$1"
