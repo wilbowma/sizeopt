@@ -7,7 +7,9 @@ PRESET=veryslow
 
 EXTENSION="${IN##*.}"
 
-ffmpeg -i "$IN" -c:v libx265 -preset $PRESET -crf 34 -c:a copy "$OUT.mkv"
+# NB: Audio optimize for voice; remove -application voip for other and consider
+# adjusting bitrate (-b:a)
+ffmpeg -i "$IN" -c:v libx265 -preset $PRESET -crf 34 -c:a libopus -vbr on -compression_level 10 -b:a 48k -application voip "$OUT.mkv"
 
 SIZE1=`stat -c"%s" "$IN"`
 SIZE2=`stat -c"%s" "$OUT"`
