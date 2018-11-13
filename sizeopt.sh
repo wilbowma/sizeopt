@@ -15,6 +15,9 @@ case "$TYPE" in
     "application/pdf")
         pdfopt.sh "$1"
         ;;
+    "application/x-pie-executable")
+        upx --best -t -k "$1"
+        ;;
     *)
         echo "Sorry, I don't know how to optimize $TYPE"
         ;;
