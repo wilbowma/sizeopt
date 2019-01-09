@@ -5,7 +5,7 @@ OUT=`mktemp`
 
 # jbig2 makes a big difference.
 # ect makes a difference, and is faster than pngout
-/usr/bin/pdfsizeopt --use-jbig2=yes --use-image-optimizer="ect -9 -strip -progressive --mt-deflate %(targetfnq)s" "$IN" "$OUT"
+/usr/bin/pdfsizeopt --do-double-check-type1c-output=yes --use-jbig2=yes --use-image-optimizer="ect -9 -strip --mt-deflate %(targetfnq)s" "$IN" "$OUT"
 
 SIZE1=`stat -c"%s" "$IN"`
 SIZE2=`stat -c"%s" "$OUT"`
